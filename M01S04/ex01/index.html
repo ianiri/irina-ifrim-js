@@ -5,8 +5,24 @@
     <title>Flow</title>
 </head>
 <body>
+    <p id="message"></p>
 
     <script>
+        var value          = window.prompt('Introdu o valoare');
+        var messageElement = document.getElementById('message');
+        var message        = '';      
+
+        if (value % 2 === 0) {
+            message = 'Valoarea este para.';
+        } else {
+            message = 'Valoarea este impara.';
+        }
+
+        messageElement.innerText = message;
+
+
+        console.log(`Valoarea este: ${value}.`);
+        console.log(message);
 
     </script>
 </body>
