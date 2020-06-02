@@ -9,21 +9,30 @@
   <p id="message"></p>
   
   <script>
-    var number          = window.prompt('Enter nember');
+    var number          = window.prompt('Enter number');
     var messageElement = document.getElementById('message');
     var message        = '';
     var testNumber     = 20;
 
     number = +number;
 
+    // if (number < testNumber) {
+    //   message = `Numarul introdus este mai mic decat ${testNumber}`;
+    // } else {
+    //   message = `Numarul introdus este mai mare decat ${testNumber}`;
+    // }
+
+    // if (number === testNumber) {
+    //   message = `Numarul este ${testNumber}!`;
+    // }
+
+// cu else if
     if (number < testNumber) {
       message = `Numarul introdus este mai mic decat ${testNumber}`;
+    } else if (number === testNumber) {
+      message = `Numarul este ${testNumber}!`;
     } else {
       message = `Numarul introdus este mai mare decat ${testNumber}`;
-    }
-
-    if (number === testNumber) {
-      message = `Numarul este ${testNumber}!`;
     }
 
     messageElement.innerText = message;
