@@ -17,10 +17,10 @@ var person = {
     {
       name: 'Boo',
       species: 'peste',
-      age: 1
+      age: 1,
     },
   ],
-  zipCode: 1155887
+  zipCode: 1155887,
 };
 
 console.warn('Afiseaza propozitia: “Numele meu este: xxx si yyy si am x animale”. Nu uita de proprietatea length a arrayului pets.');
