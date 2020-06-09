@@ -105,7 +105,7 @@ for (i = 0; i < person.friends.length; i++) {
   var friend = person.friends[i];
   var friendBirthYear = currentYear - friend.age;
 
-  yearsTotal += friendBirthYear
+  yearsTotal += friendBirthYear;
 }
 
 console.log(yearsTotal);
