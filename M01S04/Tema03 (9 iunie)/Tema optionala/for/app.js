@@ -36,7 +36,7 @@ for(i = 0; i < arrayLength; i++) {
 
   
 if (arrayLength === 1) {
-  messageContent = `Prietenul meu este este ${friend.name} ${friend.surname}${punctuation}`;
+  messageContent = `Prietenul meu este ${friend.name} ${friend.surname}${punctuation}`;
 }
 }
 messageElement.innerText = messageContent;
