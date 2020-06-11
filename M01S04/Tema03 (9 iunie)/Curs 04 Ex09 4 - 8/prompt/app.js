@@ -1,7 +1,7 @@
 var number = window.prompt('Introdu numarul care va fi folosit drept multiplu.');
 var minNumber = window.prompt('Introdu un numar minim.');
 var maxNumber = window.prompt('Introdu un numar maxim.');
-messageElement = document.getElementById('message');
+var messageElement = document.getElementById('message');
 var messageContent = `Multiplii de ${number} intre ${minNumber} si ${maxNumber} sunt: `;
 var i = parseInt(minNumber);
 

@@ -1,6 +1,6 @@
 var number = window.prompt('Introdu numarul care va fi folosit drept multiplu.');
 var maxNumber = window.prompt('Introdu un numar maxim.');
-messageElement = document.getElementById('message');
+var messageElement = document.getElementById('message');
 var messageContent = `Multiplii de ${number} intre 5 si ${maxNumber} sunt: `;
 var i = 5;
 

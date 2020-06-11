@@ -16,12 +16,12 @@ console.warn('Folosind keywordul break opreste bucla atunci cand numarul este eg
 var i = 1;
 do {
   console.log(i);
+  i++;
 
   if (i === 12) {
     break;
   }
 
-  i++;
 } while (i < 52)
 
 console.warn('Folosind keywordul continue afiseaza doar numerele impare intre 8 si 32');
