@@ -16,7 +16,8 @@ console.log(totalSurface);
 let aggregateSurfaceArea = (l1, L1, l2, L2) => {
   let squareFirstSurface = calculateRectangleArea(l1, L1);
   let squareSecondSurface = calculateRectangleArea(l2, L2);
-
-  return `Primului dreptunghi - ${squareFirstSurface}. Al doilea dreptunghi - ${squareSecondSurface}.`;
+  
+  return squareFirstSurface + squareSecondSurface;
+  // return `Primului dreptunghi - ${squareFirstSurface}. Al doilea dreptunghi - ${squareSecondSurface}.`;
 };
 console.log(aggregateSurfaceArea(48, 92, 51, 102));
