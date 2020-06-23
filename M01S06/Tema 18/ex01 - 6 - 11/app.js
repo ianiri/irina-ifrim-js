@@ -17,10 +17,12 @@ let car = {
     this.speed = 0;
   },
   setSpeed: function (x) {
-    if (x <= this.topSpeed & x >= this.topReverseSpeed) {
-      return this.speed = x;
+    if (x >= this.topSpeed) {
+      return this.speed = this.topSpeed;
+    } else if (x <= this.topReverseSpeed) {
+      return this.speed = this.topReverseSpeed;
     } else {
-      return 'Speed not good';
+      return this.speed = x;
     }
   },
   openTrunk: function () {
@@ -47,12 +49,9 @@ let car = {
 // Afiseaza propozitia: "Masina era marca make si se deplasa cu speed km/h".
 console.log(`Masina are marca ${car.make} si se deplaseaza cu ${car.speed} km/h.`)
 // Decelereaza masina cu 5 unitati apoi afisaza propozitia: "Viteza noua este speed km/h".
-car.decelerate();
-car.decelerate();
-car.decelerate();
-car.decelerate();
-car.decelerate();
-
+for(let i = 0; i <= 4; i++) {
+  car.decelerate();
+}
 console.log(`Viteza noua este ${car.speed} km/h.`);
 // Adauga o metoda numita stop() care sa faca proprietatea speed 0, apoi afiseaza viteza.
 car.stop();
