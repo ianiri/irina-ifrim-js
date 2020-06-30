@@ -131,12 +131,10 @@ keyboard.addEventListener('click', (event) => {
     tries = 5;
     word = words[Math.floor(Math.random() * words.length)];
     guesedLetters.length = 0;
-    let okIterationCount = 0;
     let buttons = document.querySelectorAll('[disabled]');
 
     buttons.forEach((button) => {
-      button.classList.remove('btn-danger');
-      button.classList.remove('btn-success');
+      button.classList.remove('btn-danger', 'btn-success');
       button.disabled = false;
     });
 
