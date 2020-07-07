@@ -88,3 +88,241 @@
   bottom: 70px;
   left: 10px;
 }
+
+
+.bike {
+  width: 190px;
+  height: 120px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.top-tube {
+  width: 79px;
+  top: 20px;
+  left: 60px;
+  height: 5px;
+  background-color: red;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.fork-tube {
+  width: 59px;
+  height: 5px;
+  top: 47px;
+  left: 116px;
+  transform: rotate(75deg);
+  background-color: red;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.seat-tube {
+  height: 5px;
+  background-color: red;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+  top: 48px;
+  width: 59px;
+  transform: rotate(75deg);
+  left: 39px;
+}
+
+.back-tube {
+  height: 5px;
+  background-color: red;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+  top: 46px;
+  left: 19px;
+  width: 61px;
+  transform: rotate(-65deg);
+}
+
+.down-tube {
+  height: 5px;
+  background-color: red;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+  width: 83px;
+  top: 49px;
+  left: 66px;
+  transform: rotate(-40deg);
+}
+
+.chain-tube {
+  height: 5px;
+  background-color: red;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+  top: 75px;
+  left: 34px;
+  width: 46px;
+}
+
+.bike__seat {
+  background-color: black;
+  position: absolute;
+  left: 50px;
+  z-index: 3;
+  border-radius: 20px;
+  top: 7px;
+}
+
+.seat-base {
+  width: 20px;
+  height: 15px;
+}
+
+.seat-front {
+  background-color: black;
+  width: 25px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  border-bottom-right-radius: 15px;
+}
+
+.bike__handlers {
+  position: absolute;
+  right: 54px;
+  top: 7px;
+
+}
+
+.base {
+  background-color: silver;
+  height: 5px;
+  width: 5px;
+  position: absolute;
+  top: 10px;
+}
+
+.bar {
+  position: absolute;
+  top: 7px;
+  width: 35px;
+  height: 5px;
+  background-color: silver;
+  border-radius: 20px;
+  transform-origin: 0% 50%;
+  transform: rotate(-20deg);
+}
+
+.handle {
+  background-color: black;
+  width: 15px;
+  height: 6px;
+  transform: rotate(-20deg) translateX(20px);
+  position: absolute;
+  top: 7px;
+  border-radius: 20px;
+  transform-origin: 0% 50%;
+}
+
+.bike__light {
+  position: absolute; 
+  width: 12px;
+  height: 12px; 
+  background-color: #FFF; 
+  border-radius: 6px;
+  border: 1px solid lightgray;
+}
+
+.bike__light--front {
+  right: 36px;
+  top: 17px;
+  z-index: 5;
+}
+
+.bike__light--back {
+  left: 45px;
+  top: 24px;
+  z-index: 5;
+}
+
+.bike__light--front.light--on {
+  background-color: #ffeb3b;
+}
+
+.bike__wheel {
+  width: 60px;
+  height: 60px;
+  border: 5px solid black;
+  position: absolute;
+  top: 44px;
+  border-radius: 50%;
+}
+
+.bike__wheel--front {
+  right: 0;
+}
+
+.bike__wheel--back {
+  left: 0;
+}
+
+
+.center {
+  position: absolute;
+  top: 25px;
+  left: 27px;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: black;
+}
+
+.spoke {
+  height: 1px;
+  width: 30px;
+  background-color: black;
+  position: absolute;
+  top: 29px;
+  transform-origin: 100% 50%;
+}
+
+.spoke--1 {
+  transform: rotate(72deg);
+}
+
+.spoke--2 {
+  transform: rotate(144deg);
+}
+
+.spoke--3 {
+  transform: rotate(216deg);
+}
+
+.spoke--4 {
+  transform: rotate(288deg);
+}
+
+.bike__controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.bike__speed {
+  margin: 0;
+}
+
+.bike__stop {
+  background-color: indianred;
+  font-weight: bold;
+}
+
+.frame__bike {
+  position: absolute; 
+  left: 5px;
+  top: 52px;
+}

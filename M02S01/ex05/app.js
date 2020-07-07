@@ -15,7 +15,6 @@ class Shape {
     this.borderColor = borderColor;
   }
 
-  
   setPosX(x) {
     this.posX = x;
   }
@@ -43,7 +42,16 @@ class Shape {
 
 class Rectangle extends Shape {
   
+  shape = document.createElement('div');
+  
+  render () {
+    this.shape.classList.add('shape', 'shape--rectangle');
+    document.body.appendChild(this.shape);
+  }
 }
+
+let rectangle = new Rectangle();
+rectangle.render();
 
 class Circle extends Shape {
   constructor(
@@ -65,8 +73,49 @@ class Circle extends Shape {
     this.borderRadius = this.setBorderRadius(radius);
   }
 
+  shape = document.createElement('div');
+
   setBorderRadius(br) {
 
     return br;
   }
+
+  render () {
+    this.shape.classList.add('shape', 'shape--circle');
+    this.shape.style.cssText = `top: 200px; left: 100px;`;
+    document.body.appendChild(this.shape);
+  }
 }
+
+let circle = new Circle()
+circle.render();
+
+class Square extends Shape {
+  constructor (
+    posX,
+    posY,
+    width,
+    color,
+    borderColor,
+  ) {
+    super (
+    posX, 
+    posY, 
+    width,
+    color, 
+    borderColor,
+    );
+  }
+
+  shape = document.createElement('div');
+
+  render () {
+    this.shape.classList.add('shape', 'shape--square');
+    this.shape.style.cssText = `left: 100px;`;
+    document.body.appendChild(this.shape);
+  }
+
+}
+
+let square = new Square()
+square.render();
