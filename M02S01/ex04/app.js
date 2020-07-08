@@ -14,6 +14,7 @@ class Car {
   }
 
   areLightsOn = false;
+  areBreakingLightsOn = false;
   areHazardsOn = false;
 
   frame = document.createElement('div');
@@ -22,6 +23,8 @@ class Car {
   carBody = document.createElement('div');
   lightBack = document.createElement('div');
   lightFront = document.createElement('div');
+  hazardLightBack = document.createElement('div');
+  hazardLightFront = document.createElement('div');
   wheelBack = document.createElement('div');
   wheelFront = document.createElement('div');
   wheelCapBack = document.createElement('div');
@@ -40,29 +43,22 @@ class Car {
   }
 
   engageBreak () {
-    this.areLightsOn = false;
+    this.areBreakingLightsOn = false;
 
     this.lightBack.classList.add('light--on');
   }
 
   disenagageBreak () {
-    this.areLightsOn = true;
+    this.areBreakingLightsOn = true;
 
     this.lightBack.classList.remove('light--on');
   }
 
   toggleHazards () {
-    let blink = setInterval(() => {
-
-      this.areHazardsOn = !this.areHazardsOn;
-      this.lightFront.classList.toggle('light--on');
-      this.lightBack.classList.toggle('light--on');
-      return this.areHazardsOn;
-    }, 500);
-
-    setTimeout(() => {
-      clearInterval(blink);
-    }, 6000);
+    this.areHazardsOn = !this.areHazardsOn;
+    this.hazardLightFront.classList.toggle('light--blink');
+    this.hazardLightBack.classList.toggle('light--blink');
+    return this.areHazardsOn;
   }
 
   moveFrame (left, top) {
@@ -131,6 +127,13 @@ class Car {
     this.lightFront.classList.add('light', 'light--front');
     this.carBody.appendChild(this.lightBack);
     this.carBody.appendChild(this.lightFront);
+
+    // create hazard lights
+    this.hazardLightBack.classList.add('light__hazard', 'light--back');
+    this.hazardLightFront.classList.add('light__hazard', 'light--front');
+    this.carBody.appendChild(this.hazardLightBack);
+    this.carBody.appendChild(this.hazardLightFront);
+
 
     // create wheels
     this.wheelBack.classList.add('wheel', 'car__wheel', 'car__wheel--back');
@@ -229,7 +232,7 @@ class Bike {
   }
 
   displaySpeed () {
-    this.speedDisplay.innerText = bike.speed;
+    this.speedDisplay.innerText = this.speed;
   }
 
   setSpeed (speed) {
@@ -359,6 +362,7 @@ class Bike {
     // create speed display
     this.speedDisplay.classList.add('bike__speed');
     this.bikeControls.appendChild(this.speedDisplay);
+    this.displaySpeed(this.speed);
 
     // create stop button
     this.stopButton.classList.add('bike__stop');

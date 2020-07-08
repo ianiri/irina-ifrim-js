@@ -75,6 +75,30 @@
   background-color: #F00;
 }
 
+.light__hazard {
+  position: absolute; 
+  width: 15px;
+  height: 15px; 
+  background-color: #F00; 
+  border-radius: 10px;
+  opacity: 0;
+}
+
+@keyframes action-light {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.light__hazard.light--blink {
+  animation: action-light 1s infinite;
+}
+
+
 .frame {
   width: 200px;
   height: 200px;
