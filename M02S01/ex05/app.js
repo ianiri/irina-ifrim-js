@@ -17,22 +17,22 @@ class Shape {
 
   setPosX(x) {
     this.posX = x;
-    this.shape.style.cssText = `left: ${this.posX}px;`;
+    this.shape.style.left = `${this.posX}px`;
   }
 
   setPosY(y) {
     this.posY = y;
-    this.shape.style.cssText = `top: ${this.posY}px;`;
+    this.shape.style.top = `${this.posY}px`;
   }
 
   setWidth(w) {
     this.width = w;
-    this.shape.style.cssText = `width: ${this.width}px;`;
+    this.shape.style.width = `${this.width}px`;
   }
 
   setHeight(h) {
     this.height = h;
-    this.shape.style.cssText = `height: ${this.height}px;`;
+    this.shape.style.height = `${this.height}px`;
   }
 
   setColor(c) {
@@ -52,14 +52,23 @@ class Rectangle extends Shape {
 
   render () {
     this.shape.classList.add('shape');
-    this.shape.style.cssText = `left: ${this.posX}px; top: ${this.posY}px; width: ${this.width}px; height: ${this.height}px;`;
+    this.shape.style.left = `${this.posX}px`;
+    this.shape.style.top = `${this.posY}px`;
+    this.shape.style.width = `${this.width}px`;
+    this.shape.style.height = `${this.height}px`;
+    this.shape.style.backgroundColor = this.color;
+    this.shape.style.borderColor = this.borderColor;
 
     document.body.appendChild(this.shape);
   }
 }
 
-let rectangle = new Rectangle(10, 50, 60, 120);
+let rectangle = new Rectangle(20, 100, 80, 120);
 rectangle.render();
+rectangle.setPosX(10);
+rectangle.setPosY(50);
+rectangle.setWidth(60);
+rectangle.setHeight(120);
 rectangle.setBorderColor('red');
 
 class Circle extends Shape {
@@ -84,19 +93,31 @@ class Circle extends Shape {
   shape = document.createElement('div');
 
   setBorderRadius(br) {
-
-    return br;
+    this.radius = br;
+    this.shape.style.borderRadius = `${this.radius}px`;
   }
 
   render () {
     this.shape.classList.add('shape');
-    this.shape.style.cssText = `left: ${this.posX}px; top: ${this.posY}px; width: ${this.borderRadius}px; height: ${this.borderRadius}px; border-radius: ${this.borderRadius}px`;
+    this.shape.style.left = `${this.posX}px`;
+    this.shape.style.top = `${this.posY}px`;
+    this.shape.style.width = `${this.radius}px`;
+    this.shape.style.height = `${this.radius}px`;
+    this.shape.style.borderRadius = `${this.radius}px`;
+    this.shape.style.backgroundColor = this.color;
+    this.shape.style.borderColor = this.borderColor;
+
     document.body.appendChild(this.shape);
   }
 }
 
-let circle = new Circle(200, 300, 100)
+let circle = new Circle(200, 300, 200)
 circle.render();
+circle.setPosX(200);
+circle.setPosY(300);
+circle.setWidth(100);
+circle.setHeight(100);
+circle.setBorderRadius(100);
 circle.setBorderColor('darkblue');
 
 class Square extends Shape {
@@ -120,7 +141,12 @@ class Square extends Shape {
 
   render () {
     this.shape.classList.add('shape');
-    this.shape.style.cssText = `left: ${this.posX}px; top: ${this.posY}px; width: ${this.width}px; height: ${this.width}px;`;
+    this.shape.style.left = `${this.posX}px`;
+    this.shape.style.top = `${this.posY}px`;
+    this.shape.style.width = `${this.width}px`;
+    this.shape.style.height = `${this.width}px`;
+    this.shape.style.backgroundColor = this.color;
+    this.shape.style.borderColor = this.borderColor;
 
     document.body.appendChild(this.shape);
   }
@@ -129,5 +155,9 @@ class Square extends Shape {
 
 let square = new Square(100, 50, 50);
 square.render();
+square.setPosX(200);
+square.setPosY(50);
+square.setWidth(70);
+square.setHeight(70);
 square.setBorderColor('crimson');
 square.setColor('yellowgreen');

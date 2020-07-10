@@ -93,13 +93,24 @@
     opacity: 1;
   }
 
+  49% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
   100% {
     opacity: 0;
   }
 }
 
 .light__hazard.light--blink {
-  animation: action-light 1s infinite;
+  animation-name: action-light;
+  animation-duration: 1s;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
 }
 
 
