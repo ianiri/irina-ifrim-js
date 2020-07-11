@@ -56,6 +56,13 @@ $(document).ready(() => {
   // Adauga un checkbox “Are animale de casa” nebifat. In momentul in care acesta este apasat, afiseaza un nou fieldset cu campurile Rasa, Nume si Varsta si un buton de Salvare. Cand butonul este apasat, afiseaza in a treia lista neordonata datele fiecarui animal si goleste acele campuri.
   // Cand checkboxul este debifat, elimina fieldsetul.
 
+  let $seeSkill = $('#seeSkill');
+  $seeSkill.on('click', (event) => {
+    let $skillSection = $(event.currentTarget).next('fieldset');
+    let $seeSkillText = $seeSkill.text() == 'Afiseaza Detalii' ? 'Ascunde Detalii' : 'Afiseaza Detalii';
+    $skillSection.fadeToggle();
+    $seeSkill.text($seeSkillText);
+  })
 
   $('#addSkill').on('click', (event) => {
     // let skillName = $(event.currentTarget).prev().val();
@@ -68,11 +75,31 @@ $(document).ready(() => {
 
     let ulClass = 'skills-ul';
     let $skillsUl = $(`.${ulClass}`);
+    let $skillsList = $('.person-skills');
 
     if ($skillsUl.length < 1) {
+      $skillsList.append(`<input type="checkbox" name="has-skills" id="has-skills" checked>
+      <label for="has-skills">Ascunde lista</label>`)
+
+      let $skillsCheck = $('#has-skills');
+      let $skillsCheckText = $skillsCheck.next('label');
+
+      $skillsCheck.on('click', (event) => {
+        let $checkBox = $(event.currentTarget);
+        let isChecked = $checkBox.is(':checked');
+        
+        if (isChecked) {
+          $skillsUl.show();
+          $skillsCheckText.text('Ascunde lista');
+        } else {
+          $skillsUl.hide();
+          $skillsCheckText.text('Arata lista');
+        }
+      });
+
       $skillsUl = $('<ul>', {
         class: ulClass,
-      }).appendTo('.person-skills')
+      }).appendTo($skillsList)
         .on('click', '.skill-delete, .skill-edit-cancel', (event) => {
         // if (event.target && event.target.nodeName === 'BUTTON' )
         $(event.currentTarget).parent().remove();
@@ -91,8 +118,8 @@ $(document).ready(() => {
           $skillEditSave.parents('li').find('span').text(newSkillName);
           $skillEditSave.parent().remove();
         });
-    }
 
+    }
 
 
     $skillsUl.append(`<li>
@@ -130,8 +157,126 @@ $(document).ready(() => {
         value: $field.val(),
       });
     });
+    if (formFields[0].value === '' || formFields[1].value === '' || formFields[2].value === '') {
+      return
+    }
+    
+    let $petList = $('.person-pets');
+    let ulClass = 'pet-ul';
+    let $petsUl = $(`.${ulClass}`);
 
-    console.log(formFields);
+    if ($petsUl.length < 1) {
+    $petList.append(`<input type="checkbox" name="has-pets-list" id="has-pets-list" checked>
+    <label for="has-pets-list">Ascunde lista</label>`);
+
+    let $petsUl = $('<ul>', {
+      class: ulClass,
+    }).appendTo($petList);
+
+    let $petsLi = $('<li>', {
+      class: 'pet-li',
+      text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
+    }).appendTo($petsUl)
+      .append(`<button class="pet-delete">Sterge</button>`)
+      .on('click', '.pet-delete', (event) => {
+        $(event.currentTarget).parent().remove();
+      });
+
+      let $petsCheck = $('#has-pets-list');
+      let $petsCheckText = $petsCheck.next('label');
+  
+      $petsCheck.on('click', (event) => {
+        let $checkBox = $(event.currentTarget);
+        let isChecked = $checkBox.is(':checked');
+        
+        if (isChecked) {
+          $petsUl.show();
+          $petsCheckText.text('Ascunde lista');
+        } else {
+          $petsUl.hide();
+          $petsCheckText.text('Afiseaza lista');
+        }
+      });
+  } else {
+    let $petsLi = $('<li>', {
+      class: 'pet-li',
+      text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
+    }).appendTo($petsUl)
+      .append(`<button class="pet-delete">Sterge</button>`)
+      .on('click', '.pet-delete', (event) => {
+        $(event.currentTarget).parent().remove();
+      });
+    }
+    $('.pet-form').find('input[name]').val('');
   });
+
+  $('#addFriend').on('click', (event) => {
+    let $addFriendButton = $(event.currentTarget);
+    let $friendForm = $addFriendButton.parent();
+
+    let $fields = $friendForm.children('input[name]');
+    let formFields = [];
+    $fields.each((index, domElement) => {
+      let $field = $(domElement);
+    
+      formFields.push({
+        name: $field.attr('name'),
+        value: $field.val(),
+      });
+    });
+    if (formFields[0].value === '' || formFields[1].value === '' || formFields[2].value === '') {
+      return
+    }
+
+    let $friendList = $('.person-friends');
+    let ulClass = 'friend-ul';
+    let $friendsUl = $(`.${ulClass}`);
+
+    if ($friendsUl.length < 1) {
+      $friendList.append(`<input type="checkbox" name="has-friends-list" id="has-friends-list" checked>
+      <label for="has-friends-list">Ascunde lista prietenilor</label>`);
+  
+      let $friendsUl = $('<ul>', {
+        class: ulClass,
+      }).appendTo($friendList);
+
+      let $friendLi = $('<li>', {
+        class: 'friend-li',
+        text: `Prietenul meu  este ${formFields[0].value} ${formFields[1].value} si are ${formFields[2].value} ani. `,
+      }).appendTo($friendsUl)
+        .append(`<button class="friend-delete">Sterge</button>`)
+        .on('click', '.friend-delete', (event) => {
+          $(event.currentTarget).parent().remove();
+        });
+
+      let $friendsCheck = $('#has-friends-list');
+      let $friendsCheckText = $friendsCheck.next('label');
+  
+      $friendsCheck.on('click', (event) => {
+        let $checkBox = $(event.currentTarget);
+        let isChecked = $checkBox.is(':checked');
+        
+        if (isChecked) {
+          $friendsUl.show();
+          $friendsCheckText.text('Ascunde lista prietenilor');
+        } else {
+          $friendsUl.hide();
+          $friendsCheckText.text('Afiseaza lista prietenilor');
+        }
+      });
+    } else {
+      let $friendLi = $('<li>', {
+        class: 'friend-li',
+        text: `Prietenul meu  este ${formFields[0].value} ${formFields[1].value} si are ${formFields[2].value} ani. `,
+      }).appendTo($friendsUl)
+        .append(`<button class="friend-delete">Sterge</button>`)
+        .on('click', '.friend-delete', (event) => {
+          $(event.currentTarget).parent().remove();
+        });
+    }
+
+    $('.friend-form').find('input[name]').val('');
+  });
+
 });
 
