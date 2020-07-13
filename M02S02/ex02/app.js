@@ -157,10 +157,19 @@ $(document).ready(() => {
         value: $field.val(),
       });
     });
-    if (formFields[0].value === '' || formFields[1].value === '' || formFields[2].value === '') {
-      return
+
+    let fieldContentCheck = () => {
+      for (let i = 0; i < formFields.length; i++) {
+        if (formFields[i].value === '') {
+          return true;  
+        }
+      }
     }
     
+    if (fieldContentCheck() === true) {
+      return
+    };
+
     let $petList = $('.person-pets');
     let ulClass = 'pet-ul';
     let $petsUl = $(`.${ulClass}`);
@@ -173,7 +182,7 @@ $(document).ready(() => {
       class: ulClass,
     }).appendTo($petList);
 
-    let $petsLi = $('<li>', {
+    let $petLi = $('<li>', {
       class: 'pet-li',
       text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
     }).appendTo($petsUl)
@@ -182,23 +191,23 @@ $(document).ready(() => {
         $(event.currentTarget).parent().remove();
       });
 
-      let $petsCheck = $('#has-pets-list');
-      let $petsCheckText = $petsCheck.next('label');
+      let $petListToggle = $('#has-pets-list');
+      let $petListToggleText = $petListToggle.next('label');
   
-      $petsCheck.on('click', (event) => {
+      $petListToggle.on('click', (event) => {
         let $checkBox = $(event.currentTarget);
         let isChecked = $checkBox.is(':checked');
         
         if (isChecked) {
           $petsUl.show();
-          $petsCheckText.text('Ascunde lista');
+          $petListToggleText.text('Ascunde lista');
         } else {
           $petsUl.hide();
-          $petsCheckText.text('Afiseaza lista');
+          $petListToggleText.text('Afiseaza lista');
         }
       });
   } else {
-    let $petsLi = $('<li>', {
+    let $petLi = $('<li>', {
       class: 'pet-li',
       text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
     }).appendTo($petsUl)
@@ -208,6 +217,7 @@ $(document).ready(() => {
       });
     }
     $('.pet-form').find('input[name]').val('');
+
   });
 
   $('#addFriend').on('click', (event) => {
