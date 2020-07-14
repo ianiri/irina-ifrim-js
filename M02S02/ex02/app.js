@@ -161,7 +161,7 @@ $(document).ready(() => {
     let isfieldContentValid = () => {
       for (let i = 0; i < formFields.length; i++) {
         if (formFields[i].value === '') {
-          return flase;  
+          return false;  
         }
       }
     }
