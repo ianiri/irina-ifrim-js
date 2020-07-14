@@ -158,15 +158,15 @@ $(document).ready(() => {
       });
     });
 
-    let fieldContentCheck = () => {
+    let isfieldContentValid = () => {
       for (let i = 0; i < formFields.length; i++) {
         if (formFields[i].value === '') {
-          return true;  
+          return flase;  
         }
       }
     }
     
-    if (fieldContentCheck() === true) {
+    if (isfieldContentValid() === false) {
       return
     };
 
