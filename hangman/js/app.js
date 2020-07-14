@@ -5,8 +5,8 @@ let guesedLetters = [];
 let gameEnded = false;
 let wordGuesed = false;
 let keyboard = document.querySelector('.keyboard');
-let resetButton = document.querySelector('.button-reset');
 let message = document.querySelector('.message');
+let resetButtons = document.querySelector('.tries-control');
 
 let renderTries = () => {
   let triesElement = document.getElementById('js-tries');
@@ -127,22 +127,41 @@ keyboard.addEventListener('click', (event) => {
   }
 });
 
-  resetButton.addEventListener('click', () => {
-    tries = 5;
-    word = words[Math.floor(Math.random() * words.length)];
-    guesedLetters.length = 0;
-    let buttons = document.querySelectorAll('[disabled]');
+let resetGame = (triesNumber) => {
+  tries = triesNumber;
+  word = words[Math.floor(Math.random() * words.length)];
+  guesedLetters.length = 0;
+  let buttons = document.querySelectorAll('[disabled]');
 
-    buttons.forEach((button) => {
-      button.classList.remove('btn-danger', 'btn-success');
-      button.disabled = false;
-    });
+  buttons.forEach((button) => {
+    button.classList.remove('btn-danger', 'btn-success');
+    button.disabled = false;
+  });
 
-    message.innerText = 'Ok, hai sa incercam cu un cuvant nou.';
-    setTimeout (() => {
-      message.innerText = '';
-    }, 6000);
+  message.innerText = 'Ok, hai sa incercam cu un cuvant nou.';
+  setTimeout (() => {
+    message.innerText = '';
+  }, 6000);
 
-    renderTries();
-    renderWord();
+  renderTries();
+  renderWord();
+}
+
+  resetButtons.addEventListener('click', () => {
+    let target = event.target;
+
+    if (target && target.classList.contains('reset-standard')) {
+      resetGame(5);
+      return;
+    }
+
+    if (target && target.classList.contains('reset-extra1')) {
+      resetGame(6);
+      return;
+    }
+
+    if (target && target.classList.contains('reset-extra2')) {
+      resetGame(7);
+      return;
+    }
   });
