@@ -175,47 +175,38 @@ $(document).ready(() => {
     let $petsUl = $(`.${ulClass}`);
 
     if ($petsUl.length < 1) {
-    $petList.append(`<input type="checkbox" name="has-pets-list" id="has-pets-list" checked>
-    <label for="has-pets-list">Ascunde lista</label>`);
+      $petList.append(`<input type="checkbox" name="has-pets-list" id="has-pets-list" checked>
+      <label for="has-pets-list">Ascunde lista</label>`);
 
-    let $petsUl = $('<ul>', {
-      class: ulClass,
-    }).appendTo($petList);
+      $petsUl = $('<ul>', {
+        class: ulClass,
+      }).appendTo($petList);
 
-    let $petLi = $('<li>', {
-      class: 'pet-li',
-      text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
-    }).appendTo($petsUl)
-      .append(`<button class="pet-delete">Sterge</button>`)
-      .on('click', '.pet-delete', (event) => {
-        $(event.currentTarget).parent().remove();
-      });
-
-      let $petListToggle = $('#has-pets-list');
-      let $petListToggleText = $petListToggle.next('label');
-  
-      $petListToggle.on('click', (event) => {
-        let $checkBox = $(event.currentTarget);
-        let isChecked = $checkBox.is(':checked');
-        
-        if (isChecked) {
-          $petsUl.show();
-          $petListToggleText.text('Ascunde lista');
-        } else {
-          $petsUl.hide();
-          $petListToggleText.text('Afiseaza lista');
-        }
-      });
-  } else {
-    let $petLi = $('<li>', {
-      class: 'pet-li',
-      text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
-    }).appendTo($petsUl)
-      .append(`<button class="pet-delete">Sterge</button>`)
-      .on('click', '.pet-delete', (event) => {
-        $(event.currentTarget).parent().remove();
-      });
+        let $petListToggle = $('#has-pets-list');
+        let $petListToggleText = $petListToggle.next('label');
+    
+        $petListToggle.on('click', (event) => {
+          let $checkBox = $(event.currentTarget);
+          let isChecked = $checkBox.is(':checked');
+          
+          if (isChecked) {
+            $petsUl.show();
+            $petListToggleText.text('Ascunde lista');
+          } else {
+            $petsUl.hide();
+            $petListToggleText.text('Afiseaza lista');
+          }
+        });
     }
+
+    let $petLi = $('<li>', {
+      class: 'pet-li',
+      text: `${formFields[1].value} este ${formFields[0].value} si are ${formFields[2].value} ani. `,
+    }).appendTo($petsUl)
+      .append(`<button class="pet-delete">Sterge</button>`)
+      .on('click', '.pet-delete', (event) => {
+        $(event.currentTarget).parent().remove();
+      });
     $('.pet-form').find('input[name]').val('');
 
   });
