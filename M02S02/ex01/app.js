@@ -74,3 +74,41 @@ let $msgElement = $('<h2>', {
 })
 
 $msgElement.prependTo($wrappingDiv);
+
+// Creaza un div cu clasa navigation si adauga-l dupa divul anterior, folosind metoda .after() https://api.jquery.com/after/ 
+let $navigationDiv = $('<div>', {
+  class: 'navigation'
+});
+$wrappingDiv.after($navigationDiv);
+
+// Creeaza un element de tip ancora cu textul Primul Link si clasa nav-link si adauga-l la divul cu clasa navigation.
+let $navigationAnchor = $('<a>', {
+  href: '#',
+  class: 'nav-link',
+  text: 'Primul link',
+}).appendTo($navigationDiv);
+
+// Creeaza un element h2 cu textul “Navigatie” si folosind metoda .before() adauga-l la divul cu clasa navigation. Selectorul lui before va trebui sa fie selectorul ancorei pentru a functiona corect.
+// Exemplu: .navigation .nav-link
+// https://api.jquery.com/before/
+let $navigationTitle = $('<h2>', {
+  text: 'Navigatie'
+});
+$navigationAnchor.before($navigationTitle);
+
+// Creeaza un element de tip sup cu textul 1 si folosind metoda .prepend() adauga-l in ancora .nav-link
+// https://api.jquery.com/prepend
+$navigationAnchor.prepend(`<sup>1</sup>`);
+
+// Creeaza un element de tip h1 cu textul: “Invat jQuery” si folosind metoda .before() adauga-l deasupra divului .container 
+$wrappingDiv.before(`<h1>Invat jQuery</h1>`);
+
+// Adauga prin orice metoda un paragraf cu textul “Documentatia jQuery poate fi gasita aici.” Cuvantul aici va fi o ancora care va deschide intr-o pagina noua documentia jQuery. Atributele target si href pot fi setate in acelasi fel cum sunt setate cele text sau class.
+let $documentationInfo = $(`<p>Documentatia se afla <a href="https://jquery.com/">aici</a>.</p>`).appendTo($navigationDiv);
+
+let $documentationInfo2 = $('<p class="err">Documentatia jQuery se afla <span>aici</span>.</p>').appendTo($navigationDiv);
+$('p span').empty()
+           .replaceWith($('<a>', {
+             href: '//jquery.com',
+             text: 'aici',
+           }));
