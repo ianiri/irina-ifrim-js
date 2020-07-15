@@ -11,20 +11,39 @@ class Car {
     this.speed = speed;
   }
 
-  displaySpeed () {}
+  displaySpeed () {
+    console.log(`Viteza masinii este: ${this.speed}.`);
+  }
 
-  accelerate () {
-    this.speed++;
+  accelerate (num) {
+    if (typeof num === 'undefined') {
+      this.speed++;
+    } else {
+      this.speed = this.speed + num;
+    }
+    
 
-    displaySpeed();
+    this.displaySpeed();
 
     return this;
   }
 
-  decelerate () {
-    this.speed--;
+  decelerate (num) {
+    if (typeof num === 'undefined') {
+      this.speed--;
+    } else {
+      this.speed = this.speed - num;
+    }
 
-    displaySpeed();
+    this.displaySpeed();
+
+    return this;
+  }
+
+  setSpeed (num) {
+    this.speed = num;
+
+    this.displaySpeed();
 
     return this;
   }
@@ -52,8 +71,19 @@ p.innerText = `Masina are viteza de ${audi.speed} km/h.`;
 
 document.body.appendChild(p);
 
-// //   decelerate (param) {
-//   this.speed = this.speed - param;
+// Modifica metodele accelerate si decelerate astfel incat sa primeasca un coeficient cu care sa mareasca sau sa reduca viteza si pastreaza conceptele de chaining.  Daca metodele nu sunt invocate cu un parametru explicit, sa incrementeze sau sa decrementeze cu o unitate.
+// Ridica viteza cu 12 apoi coboar-o cu 3 si apoi inca o data cu 4. 
+// Afiseaza viteza noua in DOM.
+// Creeaza o metoda chainable noua, numita setSpeed() care sa seteze viteza la o anumita valoare (fara limite superioare sau inferioare pentru simplitate).
+// Folosind noua metoda seteaza viteza la 4, apoi accelereaza la 5 folosind chaining.
+// Afiseaza noua valoare in DOM.
 
-//   return this;
-// }
+audi.accelerate(12).decelerate(3).decelerate(4);
+
+audi.setSpeed(4).accelerate(5);
+
+let p2 = document.createElement('p');
+p2.innerText = `Masina are viteza finala de ${audi.speed} km/h.`;
+
+p.after(p2);
+

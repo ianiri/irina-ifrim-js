@@ -4,20 +4,33 @@
 
 let p = document.querySelector('.message');
 let p2 = document.querySelector('.second-message');
-let initialWith = window.innerWidth;
+let initialWidth = window.innerWidth;
+let initialHeight = window.innerHeight;
+let surface = document.createElement('p');
+
+let getSurface = (L, l) => {
+  return `Fereastra are acum suprafata de ${L * l} pixeli.`;
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  p2.after(surface);
+  surface.innerText = getSurface(initialWidth, initialHeight);
+})
 
 
 window.addEventListener('resize', () => {
   console.log('Fereastra si-a schimbat dimensiunea.');
   let newWidth = window.innerWidth;
+  let newHeight = window.innerHeight;
   p.innerText = newWidth;
 
-  if (newWidth !== initialWith) {
+  if (newWidth !== initialWidth) {
     p2.innerText = 'Fereastra si-a schimbat latimea.';
   } else {
     p2.innerText = '';
   }
+  surface.innerText = getSurface(newWidth, newHeight);
 
-  initialWith = newWidth;
+  initialWidth = newWidth;
 });
 
