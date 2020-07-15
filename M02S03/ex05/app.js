@@ -8,13 +8,13 @@ let initialWidth = window.innerWidth;
 let initialHeight = window.innerHeight;
 let surface = document.createElement('p');
 
-let getSurface = (L, l) => {
+let calculateSurface = (L, l) => {
   return `Fereastra are acum suprafata de ${L * l} pixeli.`;
 };
 
 window.addEventListener('DOMContentLoaded', () => {
   p2.after(surface);
-  surface.innerText = getSurface(initialWidth, initialHeight);
+  surface.innerText = calculateSurface(initialWidth, initialHeight);
 })
 
 
@@ -29,8 +29,10 @@ window.addEventListener('resize', () => {
   } else {
     p2.innerText = '';
   }
-  surface.innerText = getSurface(newWidth, newHeight);
+  surface.innerText = calculateSurface(newWidth, newHeight);
 
   initialWidth = newWidth;
 });
 
+// Folosind evenimentul resize al obiectului window si proprietatile innerWidth si innerHeight, la fiecare redimensionare a ferestrei, afiseaza intr-un paragraf mesajul: “Fereastra are acum suprafata de xxx pixeli.”.
+// Folosind evenimentul de DOMContentLoaded si o functie reutilizabila afiseaza suprafata ferestrei si la momentul incarcarii site-ului. 
