@@ -12,6 +12,27 @@
         margin-bottom: 10px;
       }
 
+      .box-small {
+        height: 50px;
+        width: 100px;
+        border: 1px solid #000;
+        transition: background-color 1s ease;
+        margin:5px
+      }
+
+      .container {
+        display: flex;
+        margin: 10px;
+      }
+
+      .error {
+        color: red;
+      }
+
+      .hidden {
+        display: none;
+      }
+
     </style>
 </head>
 <body>
@@ -26,6 +47,22 @@
   <button>Apply</button>
 
   <button id="reset-bg">Remove</button>
+
+  <div class="container">
+    <div class="box-small">
+      <input type="checkbox" name="box-left" id="box-left">
+      <label for="box-left">Color me</label>
+    </div>
+    <div class="box-small">
+      <input type="checkbox" name="box-right" id="box-right">
+      <label for="box-right">Color me</label>
+    </div>
+  </div>
+
+  <input type="text" id="text-color">
+  <button>Apply</button>
+  <p class="error hidden">*Please type the correct hex color code: # followed by 3 or 6 digits.</p>
+
 
 
   <script src="app.js"></script>
