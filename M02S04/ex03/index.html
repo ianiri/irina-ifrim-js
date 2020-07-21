@@ -40,6 +40,10 @@
         width: 45px;
         height: 45px;
         background-color: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: top .2s linear, left .2s linear;
       }
     </style>
 </head>
@@ -51,14 +55,14 @@
 
   <div class="controls">
     <div class="row">
-      <button>⬆️</button>
+      <button id="key-up">⬆️</button>
     </div>
     <div class="row">
-      <button>⬅️</button> &nbsp; &nbsp;
-      <button>➡️</button>
+      <button id="key-left">⬅️</button> &nbsp; &nbsp;
+      <button id="key-right">➡️</button>
     </div>
     <div class="row">
-      <button>⬇️</button>
+      <button id="key-down">⬇️</button>
     </div>
   </div>
 
