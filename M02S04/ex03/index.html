@@ -25,6 +25,9 @@
       width: 750px; 
       height: auto; 
       border: 1px solid #000;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       }
 
       .controls button {
@@ -45,6 +48,27 @@
         left: 0;
         transition: top .2s linear, left .2s linear;
       }
+
+      #key-upLeft {
+        transform: rotate(-45deg);
+        margin: 5px;
+      }
+
+      #key-upRight {
+        transform: rotate(45deg);
+        margin: 5px;
+      }
+
+      #key-downLeft {
+        transform: rotate(45deg);
+        margin: 20px 5px 5px;
+      }
+
+      #key-downRight {
+        transform: rotate(-45deg);
+        margin: 5px;
+      }
+
     </style>
 </head>
 <body>
@@ -54,15 +78,28 @@
   </div>
 
   <div class="controls">
-    <div class="row">
-      <button id="key-up">⬆️</button>
+    <div>
+      <div class="row">
+        <button id="key-up">⬆️</button>
+      </div>
+      <div class="row">
+        <button id="key-left">⬅️</button>
+        <button id="key-right">➡️</button>
+      </div>
+      <div class="row">
+        <button id="key-down">⬇️</button>
+      </div>
     </div>
-    <div class="row">
-      <button id="key-left">⬅️</button> &nbsp; &nbsp;
-      <button id="key-right">➡️</button>
-    </div>
-    <div class="row">
-      <button id="key-down">⬇️</button>
+
+    <div>
+      <div class="row">
+        <button id="key-upLeft">⬆️</button>
+        <button id="key-upRight">⬆️</button>
+      </div>
+      <div class="row">
+        <button id="key-downLeft">⬇️</button>
+        <button id="key-downRight">⬇️</button>
+      </div>
     </div>
   </div>
 
