@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSS animation in JavaScript</title>    
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        padding: 20px;
+      }
+
+      .stage {
+        width: 750px;
+        height: 450px;
+        border: 1px solid #000;
+        position: relative;
+      }
+
+      .controls {
+      margin: 25px 0 0 0; 
+      padding: 15px;
+      width: 750px; 
+      height: auto; 
+      border: 1px solid #000;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      }
+
+      .controls button {
+        font-size: 27px;
+        cursor: pointer;
+      }
+
+      .row {
+        text-align: center;
+      }
+
+      .hero {
+        width: 45px;
+        height: 45px;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: top .2s linear, left .2s linear;
+      }
+
+      #key-upLeft {
+        transform: rotate(-45deg);
+        margin: 5px;
+      }
+
+      #key-upRight {
+        transform: rotate(45deg);
+        margin: 5px;
+      }
+
+      #key-downLeft {
+        transform: rotate(45deg);
+        margin: 20px 5px 5px;
+      }
+
+      #key-downRight {
+        transform: rotate(-45deg);
+        margin: 5px;
+      }
+
+    </style>
+</head>
+<body>
+  
+  <div class="stage">
+    <div class="hero"></div>
+  </div>
+
+  <div class="controls">
+    <div>
+      <div class="row">
+        <button id="key-up">⬆️</button>
+      </div>
+      <div class="row">
+        <button id="key-left">⬅️</button>
+        <button id="key-right">➡️</button>
+      </div>
+      <div class="row">
+        <button id="key-down">⬇️</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="row">
+        <button id="key-upLeft">⬆️</button>
+        <button id="key-upRight">⬆️</button>
+      </div>
+      <div class="row">
+        <button id="key-downLeft">⬇️</button>
+        <button id="key-downRight">⬇️</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

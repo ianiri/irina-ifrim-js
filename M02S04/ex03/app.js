@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (newPosition > stage.clientWidth - hero.clientWidth) {
       newPosition = stage.clientWidth - hero.clientWidth;
-      newPositionDiagonal = unitlessPositionDiagonal === 700 ? stage.clientWidth - hero.clientWidth : unitlessPositionDiagonal;;
+      newPositionDiagonal = unitlessPositionDiagonal === stage.clientWidth - step ? stage.clientWidth - hero.clientWidth : unitlessPositionDiagonal;;
     }
 
     if (newPosition > 0 && newPositionDiagonal > stage.clientWidth - hero.clientWidth) {
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (axis === 'y' && newPosition > stage.clientHeight - hero.clientHeight) {
       newPosition = stage.clientHeight - hero.clientHeight;
-      newPositionDiagonal = unitlessPositionDiagonal === 400 ? stage.clientHeight - hero.clientHeight : unitlessPositionDiagonal;
+      newPositionDiagonal = unitlessPositionDiagonal === stage.clientHeight - step ? stage.clientHeight - hero.clientHeight : unitlessPositionDiagonal;
     }
 
     hero.style[cssProperty] = `${newPosition}px`;
