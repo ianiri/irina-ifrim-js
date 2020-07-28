@@ -7,15 +7,15 @@ $(document).ready(() => {
     let step = 20;
     let cssProperty = axis === 'x' ? 'left' : 'top';
     let $currentPosition = $hero.css(cssProperty) === '0px' ? 0 : $hero.css(cssProperty);
-    let $unitlessPosition = parseInt($currentPosition);
-    let $newPosition = direction === 'fw' ? $unitlessPosition + step : $unitlessPosition - step;
+    let unitlessPosition = parseInt($currentPosition);
+    let $newPosition = direction === 'fw' ? unitlessPosition + step : unitlessPosition - step;
 
     let cssPropertyDiagonal = diagonal === 'yleft' ? 'left'
                               : diagonal === 'x' ? 'left'
                               : 'top';
     let $currentPositionDiagonal = $hero.css(cssPropertyDiagonal) === '0px' ? 0 : $hero.css(cssPropertyDiagonal);
-    let $unitlessPositionDiagonal = parseInt($currentPositionDiagonal);
-    let $newPositionDiagonal = diagonalDirection === 'fw' ? $unitlessPositionDiagonal + step : $unitlessPositionDiagonal -step;
+    let unitlessPositionDiagonal = parseInt($currentPositionDiagonal);
+    let $newPositionDiagonal = diagonalDirection === 'fw' ? unitlessPositionDiagonal + step : unitlessPositionDiagonal -step;
 
     if ($newPosition <= 0 && $newPositionDiagonal <= 0) {
       $newPosition = 0;
@@ -24,7 +24,7 @@ $(document).ready(() => {
 
     if ($newPosition < 0) {
       $newPosition = 0;
-      $newPositionDiagonal = $unitlessPositionDiagonal;
+      $newPositionDiagonal = unitlessPositionDiagonal;
     }
 
     if ($newPosition >= $stage.innerWidth() - $hero.innerWidth() && $newPositionDiagonal <= 0) {
@@ -34,22 +34,22 @@ $(document).ready(() => {
 
     if ($newPosition > $stage.innerWidth() - $hero.innerWidth()) {
       $newPosition = $stage.innerWidth() - $hero.innerWidth();
-      $newPositionDiagonal = $unitlessPositionDiagonal === $stage.innerWidth() - step ? $stage.innerWidth() - $hero.innerWidth() : $unitlessPositionDiagonal;;
+      $newPositionDiagonal = $newPositionDiagonal > $stage.innerWidth() - $hero.innerWidth() ? $stage.innerWidth() - $hero.innerWidth() : unitlessPositionDiagonal;
     }
 
     if ($newPosition > 0 && $newPositionDiagonal > $stage.innerWidth() - $hero.innerWidth()) {
-      $newPosition = $unitlessPosition;
+      $newPosition = unitlessPosition;
       $newPositionDiagonal = $stage.innerWidth() - $hero.innerWidth();
     }
 
     if ($newPositionDiagonal < 0) {
-      $newPosition = $unitlessPosition;
+      $newPosition = unitlessPosition;
       $newPositionDiagonal = 0;
     }
 
     if (axis === 'y' && $newPosition > $stage.innerHeight() - $hero.innerHeight()) {
       $newPosition = $stage.innerHeight() - $hero.innerHeight();
-      $newPositionDiagonal = $unitlessPositionDiagonal === $stage.innerHeight() - step ? $stage.innerHeight() - $hero.innerHeight() : $unitlessPositionDiagonal;
+      $newPositionDiagonal = $newPositionDiagonal > $stage.innerHeight() - $hero.innerHeight() ? $stage.innerHeight() - $hero.innerHeight() : unitlessPositionDiagonal;
     }
 
     $hero.css(cssProperty, `${$newPosition}px`) ;
@@ -84,7 +84,7 @@ $(document).ready(() => {
     }
   });
 
-  $controls.on('click', 'button', (event) => {
+  $controls.on('mousedown', 'button', (event) => {
     let button = event.target;
     let direction = button.id.split('-')[1];
     let axis = 'x';
