@@ -8,7 +8,7 @@
 let length = process.argv[2];
 let width = process.argv[3];
 
-if (length & width) {
+if (length && width) {
   console.log(`Suprafata dreptunghiului este ${length * width}`);
 }
 
@@ -16,6 +16,6 @@ if (length || width) {
   console.log(`Suprafata patratului este ${length ** 2}`);
 }
 
-if (!length & !width) {
+if (!length && !width) {
   console.log('Nu am primit parametri.')
 }

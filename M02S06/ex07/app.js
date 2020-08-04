@@ -50,22 +50,39 @@ $(document).ready(() => {
 // use npm i -g static-server
 // cd / test
 // static-server
-    createPerson(requestBody).done((response) => {
+    createPerson(requestBody).then((response) => {
       if (response.success === true) {
         buildPersonList();
         $form.find('ul').remove();
       }
     });
   });
-
-  function createPerson(requestJson) {
-    let personRequest = $.post('http://localhost:8080/persons', requestJson);
+  
+    function createPerson(requestJson) {
+    let personRequest = fetch('http://localhost:8080/persons', {
+      method: 'POST',
+      body: JSON.stringify(requestJson),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).then((result) => {
+      return result.json();
+    });
 
     return personRequest;
   }
 
+
+  // function createPerson(requestJson) {
+  //   let personRequest = $.post('http://localhost:8080/persons', requestJson);
+
+  //   return personRequest;
+  // }
+
   function buildPersonList(ulClassName = 'person-list') {
-    let personRequest = $.get('http://localhost:8080/persons').done((data) => {
+    let personRequest = fetch('http://localhost:8080/persons').then((result) => {
+      return result.json();
+    }).then((data) => {
       $(`.${ulClassName}`).remove();
 
       let $ul = $('<ul>', {
@@ -90,6 +107,33 @@ $(document).ready(() => {
       });
 
       $('body').append($ul);
-    });
+  });
+
+    // let personRequest = $.get('http://localhost:8080/persons').done((data) => {
+    //   $(`.${ulClassName}`).remove();
+
+    //   let $ul = $('<ul>', {
+    //     class: ulClassName,
+    //   });
+
+    //   data.persons.forEach((person) => {
+    //     let $li = $('<li>', {
+    //       text: person.name,
+    //     });
+
+    //     let $skillsUl = $('<ul>');
+    //     person.skills.forEach((skill) => {
+    //       let $skillLi = $('<li>', {
+    //         text: skill,
+    //       });
+
+    //       $skillLi.appendTo($skillsUl);
+    //     });
+
+    //     $li.append($skillsUl).appendTo($ul);
+    //   });
+
+    //   $('body').append($ul);
+    // });
   }
 });
