@@ -1,0 +1,29 @@
+<!-- <p>persons works!</p> -->
+
+<form #personForm="ngForm" (ngSubmit)="onSubmit(personForm.value)">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" placeholder="Nume" ngModel>
+  </div>
+  <br>
+  <div>
+    <input type="text" name="skill" placeholder="Skill" #skillInput>
+    <button type="button" (click)="addSkill(skillInput)">Add</button>
+  </div>
+  <ul *ngIf="skills.length > 0">
+    <li *ngFor="let skill of skills">{{skill}}</li>
+  </ul>
+  <br>
+  <div>
+    <button type="submit">Trimite</button>
+  </div>
+</form>
+
+<ul *ngIf="persons.length > 0">
+  <li *ngFor="let person of persons">
+    {{person.name}}
+    <ul *ngIf="person.skills.length > 0">
+      <li *ngFor="let skill of person.skills">{{skill}}</li>
+    </ul>
+  </li>
+</ul>
