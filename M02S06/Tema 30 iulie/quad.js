@@ -12,7 +12,7 @@ if (length && width) {
   console.log(`Suprafata dreptunghiului este ${length * width}`);
 }
 
-if (length || width) {
+if (length && !width) {
   console.log(`Suprafata patratului este ${length ** 2}`);
 }
 
